@@ -1,2 +1,0 @@
-# delastream
-De La Stream
