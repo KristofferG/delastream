@@ -1,0 +1,27 @@
+<p>
+  <strong>Leverantör:</strong>
+  <%= @package.provider %>
+</p>
+
+<p>
+  <strong>Paket:</strong>
+  <%= @package.name %>
+</p>
+
+<p>
+  <strong>Innehåll:</strong>
+  <%= @package.description %>
+</p>
+
+<p>
+  <strong>Pris:</strong>
+  <%= @package.price %>
+</p>
+
+<h2>Comments</h2>
+<%= render @package.comments %>
+
+<%= render 'comments/form' %>
+
+<%= link_to 'Ändra', edit_package_path(@package) %>
+<%= link_to 'Tillbaka', packages_path %>

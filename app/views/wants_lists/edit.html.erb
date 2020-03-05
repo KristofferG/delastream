@@ -1,0 +1,13 @@
+<div class="mt-5" align="center">
+  <h3>Din jag har-lista</h3>
+  <p class="small-text">
+    Ange de streamingpaket som du redan betalar för idag, men kan tänka dig dela med någon.
+    </p>
+
+
+  <%= render 'edit_form', wants_list: @wants_list, user: @user %>
+
+  <div class="body-text mt-2">
+    <%= link_to 'Tillbaka', user_path %>
+  </div>
+</div>

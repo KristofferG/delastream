@@ -1,0 +1,92 @@
+<div class="mt-3 mb-3" align="center">
+
+  <%= image_tag("delastream.png", :alt => "De La Stream", :width => "260", :class => "mb-2") %><br>
+<p id="notice"><%= notice %></p>
+
+<div class="col-xs-12 col-md-8 col-xl-6">
+  <div class="bg-dark user-wrapper" align="left">
+    <div class="m-3">
+
+      <h3>Hej <%= current_user.name %>!</h3>
+
+      <p class="body-text">
+        Här kan du skapa en lista över de streamingtjänster som du önskar att dela med någon vän. Du kanske redan har ett paket idag som du kan dela eller så önskar du att skaffa ett paket men vill ha med dig någon. Skapa en lista över dessa så matchas du ihop med andra som är ute efter samma paket.
+      </p>
+
+      <div class="mt-5">
+        <h5>Dina streamingpaket</h5>
+        <p class="small-text">
+          <% if !@user.have_list %>
+          Du har ingen lista över streamingtjänster än.<br>
+            <%= link_to 'Skapa lista', new_have_list_path(@user.id), :class => 'btn btn-success mt-2' %>
+          <% else %>
+          Här kan du lägga till och ta bort stremingtjänster från din lista.<br>
+            <%= link_to 'Uppdatera din lista', edit_have_list_path(@user.id), :class => 'btn btn-secondary mt-2' %>
+            <% end %>
+        </p>
+      </div>
+      </div>
+    </div>
+
+
+    <div class="bg-dark user-wrapper mt-3" align="left">
+      <div class="m-3">
+
+        <% if !current_user.have_list.nil? || !current_user.wants_list.nil? %>
+        <div class="mt-2 mb-4">
+          <h3>Vänner</h3>
+          <% if check_match.length == 0 %>
+            <p class="small-text">
+              Inga vänner är för närvarande ute efter samma tjänster som dig.
+            </p>
+          <% else %>
+          <p class="small-text">
+            Följande vänner är också ute efter något av streamingpaket du listat:
+          </p>
+          <p class="body-text"><b>
+            <% check_match.each do | user | %>
+              <%= user.name %><br>
+            <% end %></b>
+          </p>
+          <% end %>
+        </div>
+        <% end %>
+        <div class="mb-3">
+
+          <%= link_to 'Visa alla vänner', users_path, :class => 'btn btn-primary btn-block' %>
+        </div>
+        </div>
+      </div>
+
+
+
+
+
+    <div class="bg-dark user-wrapper mt-3" align="left">
+      <div class="m-3">
+
+
+        <div class="mt-2 mb-4">
+          <h3>Dina uppgifter</h3>
+
+          <p class="body-text">
+            <strong>Name:</strong>
+            <%= @user.name %>
+            <br>
+            <strong>Email:</strong>
+            <%= @user.email %>
+            <br>
+            <%= link_to 'Ändra dina uppgifter', edit_user_path(@user) %> |
+            <%= link_to 'Radera ditt konto', @user, method: :delete, data: { confirm: 'Är du säker?' } %>
+          </p>
+        </div>
+
+        <%= link_to 'Logga ut', logout_path, method: :delete, :class =>'btn btn-outline-primary btn-block' %>
+
+        </div>
+      </div>
+      <div class="mt-2 mb-3 small-text dark-text" align="center">
+        &copy; Maxkungen 2020
+      </div>
+      </div>
+    </div>

@@ -1,0 +1,41 @@
+  <div class="col-xs-12 col-md-7 col-xl-5">
+    <div class="bg-dark user-wrapper">
+      <div class="m-3" align="left">
+        <%= form_with model: @user, local: true do |f| %>
+          <% if user.errors.any? %>
+            <div id="error_explanation">
+              <h4><%= pluralize(user.errors.count, "error") %> förhindrade att konto kunde skapas:</h4>
+
+              <ul>
+              <% user.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+              </ul>
+            </div>
+          <% end %>
+
+          <div class="form-group">
+            <p>
+              <%= f.label :smeknamn, :for => 'name' %><br>
+              <%= f.text_field :name, :class => 'form-control', :id =>'name' %>
+            </p>
+            <p>
+              <%= f.label :epost, :for => 'email' %><br>
+              <%= f.email_field :email, :class => 'form-control', :id => 'email' %>
+            </p>
+            <p>
+              <%= f.label :lösenord, :for => 'pasword' %><br>
+              <%= f.password_field :password, :class => 'form-control', :id => 'password' %>
+            </p>
+            <p>
+              <%= f.label :bekräfta_lösenord, :for => 'pasword_confirmation' %><br>
+              <%= f.password_field :password_confirmation, :class => 'form-control', :id => 'password_confirmation' %>
+            </p>
+              <p>
+              <%= f.submit "Skapa konto",  :class => 'btn btn-primary btn-block mt-4' %>
+            </p>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>

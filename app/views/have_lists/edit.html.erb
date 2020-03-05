@@ -1,0 +1,11 @@
+<div class="mt-5" align="center">
+  <h3>Din De La Stream-lista</h3>
+  <p>Välj de streamingtjänster som du önskar att dela med något
+    </p>
+
+  <%= render 'edit_form', have_list: @have_list, user: @user %>
+
+  <div class="body-text mt-2">
+    <%= link_to 'Tillbaka', user_path %>
+  </div>
+</div>

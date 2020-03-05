@@ -1,0 +1,50 @@
+
+/*! `Custom` Bootstrap 4 theme */
+
+// Add SASS theme customizations here..
+/*! @import 'bootstrap/scss/bootstrap';
+
+$body-bg: $gray-800;
+$body-color: $gray-100;
+$primary: #495057;
+//$primary: rgb(228, 97, 97);
+$success: rgb(108, 207, 109);
+$info: rgb(163, 216, 218);
+$dark: $gray-700;
+$list-group-bg: $gray-600;
+$jumbotron-bg: $gray-400;
+$card-bg: $gray-400;
+$modal-content-bg: $gray-600;
+$modal-backdrop-bg: $gray-800;
+$pagination-bg: $gray-700;
+$pagination-border-color: $gray-600;
+$pagination-hover-bg: $gray-400;
+$pagination-hover-border-color: $gray-200;
+$pagination-disabled-bg: $gray-800;
+$pagination-disabled-color: $gray-700;
+$pagination-disabled-border-color: $gray-600;
+$table-active-bg: $gray-700;
+
+*/
+@import 'bootstrap/scss/bootstrap';
+@import 'bootstrap/scss/_variables.scss';
+$body-bg: $gray-800;
+$body-color: $gray-200;
+
+$theme-colors: (
+  primary: rgb(217,116,158),
+  success: rgb(108, 207, 109),
+  info: rgb(163, 216, 218),
+  dark: $gray-700
+);
+
+$table-color: $gray-200;
+$table-head-color: $gray-200;
+$link-color: rgb(217,116,158);
+$link-hover-color:                        darken($link-color, 15%);
+
+$input-bg: $gray-200;
+$input-disabled-bg: $gray-400;
+
+
+@import 'bootstrap/scss/bootstrap';

@@ -1,0 +1,20 @@
+  <p>
+    <strong>Commenter:</strong>
+    <%= comment.commenter %>
+  </p>
+
+  <p>
+    <strong>Comment:</strong>
+    <%= comment.body %>
+  </p>
+
+  <p>
+    <strong>Available:</strong>
+    <%= comment.available %>
+  </p>
+
+<p>
+  <%= link_to 'Destroy Comment', [comment.package, comment],
+               method: :delete,
+               data: { confirm: 'Are you sure?' } %>
+</p>

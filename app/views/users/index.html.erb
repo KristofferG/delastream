@@ -1,0 +1,67 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Vänner</h1>
+
+<div class="row mt-3" align="left">
+
+  <% @users.each do |user| %>
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 col-xl-3">
+      <% if user == current_user %>
+      <div class="bg-dark mt-3 current-user-wrapper">
+      <% else %>
+      <div class="bg-dark mt-3 user-wrapper">
+      <% end %>
+        <div class="card-body">
+          <h4 class="card-title">
+            <% if user == current_user %>
+              Du
+            <% else %>
+              <%= user.name %>
+            <% end %>
+          </h4>
+          <div class="card-text list-item">
+            <% if user.have_list.nil? || user.have_list.packages.nil? %>
+              <div class="small-text dark-text">(saknar lista)</div><br><br>
+            <% else %>
+              Har listat följande:<br><span>
+              <% user.have_list.packages.each do |p| %>
+                <% if !current_user.have_list.nil? %>
+                  <% current_user.have_list.packages.each do |c| %>
+                    <% if p == c && current_user != user %>
+                      </span><span class="match-text">
+                    <% end %>
+                    <% end %>
+                <% end %>
+                <div class="mt-1"><%= image_tag(p.logo, :alt => p.provider, :width => "20", :class => "mr-2") %><%= p.provider %> | <%= p.name %></span><br>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+          <p class="card-text mt-2">
+            <% if user == current_user %>
+              <%= link_to 'Uppdatera', user_path(user), :class => 'btn btn-secondary btn-sm small-text' %>
+            <% elsif current_user.admin %>
+              <%= link_to 'Ändra', edit_user_path(user), :class => 'btn btn-warning btn-sm small-text' %>
+              <%= link_to 'Radera', user, method: :delete, data: { confirm: 'Är du säker?' }, :class => 'btn btn-danger btn-sm small-text' %>
+            <% else %>
+              &nbsp;
+            <% end %>
+          </p>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+
+<div class="row justify-content-center">
+  <div class="col-xs-6 col-sm-6 col-md-3 col-lg-2 col-xl-2">
+  <%= link_to 'Tillbaka', user_path(current_user), :class =>'btn btn-outline-primary btn-block btn-sm mt-3' %>
+  </div>
+  <div class="col-xs-6 col-sm-6 col-md-3 col-lg-2 col-xl-2">
+  <%= link_to 'Logga ut', logout_path, method: :delete, :class =>'btn btn-outline-primary btn-block btn-sm mt-3' %>
+  </div>
+</div>
+<div class="mt-2 mb-3 small-text dark-text" align="center">
+  &copy; Maxkungen 2020
+</div>

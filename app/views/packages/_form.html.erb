@@ -1,0 +1,59 @@
+<%= form_with model: @package, local: true do |form| %>
+
+  <% if @package.errors.any? %>
+  <div id="error_explanation">
+    <h2>
+      <%= pluralize(@package.errors.count, "error") %> - Paket kunde inte läggas till pga:
+    </h2>
+    <ul>
+      <% @package.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+  <% end %>
+
+  <div class="col-xs-12 col-md-5 col-xl-3">
+
+  <div class="form-group">
+  <p>
+    <%= form.label :provider, :for => 'provider' %>
+    <%= form.text_field :provider, :class => 'form-control', :id =>'provider' %>
+  </p>
+  </div>
+
+  <p>
+    <%= form.label :name %><br>
+    <%= form.text_field :name, :class => 'form-control' %>
+  </p>
+
+  <p>
+    <%= form.label :description %><br>
+    <%= form.text_area :description, :class => 'form-control' %>
+  </p>
+
+    <%= form.label :price, :for => 'price' %>
+    <div class="input-group">
+    <%= form.number_field :price, :class => 'form-control', :id => 'price' %>
+  <div class="input-group-append">
+    <span class="input-group-text">SEK</span>
+  </div>
+  </div>
+
+  <p>
+    <%= form.label :sort_value %><br>
+    <%= form.number_field :sort, :class => 'form-control' %>
+  </p>
+
+  <p>
+    <%= form.label :logo %><br>
+    <%= form.text_field :logo, :class => 'form-control' %>
+  </p>
+
+
+  <p>
+    <%= form.submit :class => 'btn btn-primary' %>
+  </p>
+<% end %>
+
+</div>

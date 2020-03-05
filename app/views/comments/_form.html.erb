@@ -1,0 +1,22 @@
+<h2>Lägg till kommentar:</h2>
+<%= form_with(model: [ @package, @package.comments.build ], local: true) do |form| %>
+  <p>
+    <%= form.label :commenter %><br>
+    <%= form.text_field :commenter %>
+  </p>
+  <p>
+    <%= form.label :body %><br>
+    <%= form.text_area :body %>
+  </p>
+
+  <p>
+    <%= form.radio_button :available, 1 %>
+    <%= form.label :available, "Vill ha" %>
+    <%= form.radio_button :available, 2 %>
+    <%= form.label :available, "Har" %>
+  </p>
+
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>

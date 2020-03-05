@@ -1,0 +1,10 @@
+<div align="center" class="mt-5">
+  <h1>Skapa ett konto</h1>
+
+  <%= render 'form', user: @user %>
+
+  <div class="body-text m-4">
+    Har du redan ett konto? <%= link_to 'Logga in', login_path %>
+  </div>
+
+</div>
